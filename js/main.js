@@ -1,66 +1,52 @@
-$(document).ready(function () {
+$(document).ready(function() {
     var table = $("#frametable").DataTable({
         paging: false,
         searching: false,
         fixedHeader: true,
         ajax: 'data/frames/steve.json',
-        columns: [{
-                title: 'Input'
-            },
-            {
-                title: 'Startup'
-            },
-            {
-                title: 'Block'
-            },
-            {
-                title: 'Hit'
-            },
-            {
-                title: 'Counter'
-            },
-            {
-                title: 'Level'
-            },
-            {
-                title: 'Damage'
-            }
-        ]
+        columns: [
+            { title: 'Input' },
+            { title: 'Startup' },
+            { title: 'Block' },
+            { title: 'Hit' },
+            { title: 'Counter' },
+            { title: 'Level' },
+            { title: 'Damage' }
+    ]
     });
+
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
     });
 
     // Event listener to the two range filtering inputs to redraw on input
-    $("#allCheckbox").change(function () {
+    $("#allCheckbox").change(function() {
         if ($(this).is(":checked")) {
-            $('input[type=checkbox]').each(function (index) {
+            $('input[type=checkbox]').each(function(index) {
                 $(this)[0].checked = true;
             });
 
             $.fn.dataTable.ext.search.pop();
         } else {
-            $('input[type=checkbox]').each(function (index) {
+            $('input[type=checkbox]').each(function(index) {
                 $(this)[0].checked = false;
             });
-            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+            $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
                 return false;
             });
-
-
         }
         table.draw();
     });
 
 
-    $('#dismiss, .overlay').on('click', function () {
+    $('#dismiss, .overlay').on('click', function() {
         // hide sidebar
         $('#sidebar').removeClass('active');
         // hide overlay
         $('.overlay').removeClass('active');
     });
 
-    $('#sidebarCollapse').on('click', function () {
+    $('#sidebarCollapse').on('click', function() {
         // open sidebar
         $('#sidebar').addClass('active');
         // fade in the overlay
