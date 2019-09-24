@@ -1,0 +1,8 @@
+
+  { 
+    "indent_level":0,
+    "wrap_line_length": 0,
+    "keep_array_indentation": true,
+    "keep_function_indentation":true,
+    "brace_style":"collapse,preserve-inline"
+  }
