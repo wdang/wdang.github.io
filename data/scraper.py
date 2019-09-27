@@ -94,7 +94,8 @@ def multiproc():
     # csvwriter.writerows(outputs)
 
 if __name__ == '__main__':
-    csvdata = csv.reader(open('stevefox.csv'))
+    name = "Lee Chaolan"
+    csvdata = csv.reader(open('frames/' + name + '.csv'))
     data = "[\
     \"{0}\",\n\
     \"{1}\",\n\
@@ -105,7 +106,7 @@ if __name__ == '__main__':
     \"{6}\"\n\
 ]"  
 
-    with open("stevefox.json",'w') as f:
+    with open(name + ".json",'w') as f:
         f.write("{\"data\":[")
         for row in csvdata:
             f.write(data.format(*row) + ',')

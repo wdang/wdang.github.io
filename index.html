@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+<link rel="stylesheet" href="css/footable.bootstrap.css"/>
+
     <link rel="stylesheet" href="css/style.css" />
     <title></title>
 </head>
@@ -21,29 +24,15 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
+                    <i class="fas fa-times"></i>
             </div>
 
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <h3></h3>
             </div>
 
-            <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
+            <ul id ="characters-list" class="list-unstyled components characters-list">
+                <!-- SUB MENU EXAMPLE
                 <li>
                     <a href="#">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
@@ -59,12 +48,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+                -->
             </ul>
         </nav>
 
@@ -72,11 +56,16 @@
         <div id="content">
             <!-- Navbar  -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                <div class="container-fluid container-nav">
+                
+                </div><!-- container-fluid  -->
+            
+                <button type="button" id="sidebarButton" class="">
                         <i class="fas fa-align-left"></i>
                     </button>
-                </div><!-- container-fluid  -->
+                <button type="button" id="" class="">
+                        <i class="fas fa-align-left">asdasd</i>
+                    </button>
             </nav>
             <table id="frametable" class="display compact stripe hover " style="width:100% "></table>
         </div><!-- content  -->
@@ -92,6 +81,11 @@
     <script src="https://cdn.datatables.net/w/dt/dt-1.10.18/b-1.5.6/b-colvis-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/rg-1.1.0/sc-2.0.0/datatables.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/footable.js"></script>
+    <script src="js/moment.min.js"></script>
+    
+    
+    
     <script src="js/main.js"></script>
 </body>
 
