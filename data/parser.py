@@ -121,8 +121,15 @@ fields = ("Input", "Level", "Damage", "Start", "Block", "Hit", "Counter", "Notes
 Move = namedtuple('Move', fields, defaults=None)
 
 def printJSON(movelist):
-    s = "{\"data\":[]}"
-    pass
+    start = '{\n  \"data\": ['
+    end = '  ]\n}'
+    s = ("\"{}\":\"{{}}\",\n" * len(Move._fields))
+    s = s.format(*Move._fields)
+    s = s[: len(s) - 2]
+    print('{\n  \"data\": [')
+    print('{{{}}}'.format(s.format(*movelist[8])))
+    print('  ]\n}')
+    
 
 
 def getHTMLFiles():
@@ -144,10 +151,9 @@ if __name__ == '__main__':
     getHTMLFiles()
     filespaths = list(getHTMLFiles())
     moves = list(parseHTMLFramesFile(filespaths[0]))
-    print(len(moves[82]))        
+    printJSON(moves)
 
-        
-        
+
 
             
             
