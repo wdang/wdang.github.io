@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono:500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-<link rel="stylesheet" href="css/footable.bootstrap.css"/>
+    <link rel="stylesheet" href="css/footable.bootstrap.css" />
 
     <link rel="stylesheet" href="css/style.css" />
     <title></title>
@@ -24,14 +24,15 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div id="dismiss">
-                    <i class="fas fa-times"></i>
+                <i class="fas fa-times"></i>
             </div>
 
             <div class="sidebar-header">
                 <h3></h3>
             </div>
 
-            <ul id ="characters-list" class="list-unstyled components characters-list">
+
+            <ul id="characters-list" class="list-unstyled components characters-list">
                 <!-- SUB MENU EXAMPLE
                 <li>
                     <a href="#">About</a>
@@ -55,22 +56,27 @@
         <!-- Page Content  -->
         <div id="content">
             <!-- Navbar  -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar fixed-top navbar-dark bg-dark">
                 <div class="container-fluid container-nav">
-                
-                </div><!-- container-fluid  -->
-            
-                <button type="button" id="sidebarButton" class="">
-                        <i class="fas fa-align-left"></i>
+                    <ul id="navButtons">
+                        <li id="charSelect"><a href="#home">Home</a></li>
+                        <li id="frameDataButton"><a class="active" href="#news">Frames Data</a></li>
+                        <li id="combosButton"><a href="#contact">Combos</a></li>
+                        <li id="otherButton" style="float:right"><a href="#about">Other</a></li>
+                    </ul>
+
+                    <button id="sidebarButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                <button type="button" id="" class="">
-                        <i class="fas fa-align-left">asdasd</i>
-                    </button>
+
             </nav>
             <table id="frametable" class="display compact stripe hover " style="width:100% "></table>
-        </div><!-- content  -->
+        </div><!-- container-fluid  -->
 
-        <div class="overlay"></div>
+
+    </div><!-- content  -->
+
+    <div class="overlay"></div>
 
     </div><!-- wrapper  -->
 
@@ -83,9 +89,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/footable.js"></script>
     <script src="js/moment.min.js"></script>
-    
-    
-    
     <script src="js/main.js"></script>
 </body>
 

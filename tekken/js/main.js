@@ -51,59 +51,59 @@ class APP {
     static FrameTable = null;
     static CurrentPage = "Steve Fox";
     static CurrentCharacter = "Steve Fox";
-    static InitializeSideBar() {
-      $("#sidebar").mCustomScrollbar({
-        theme: "minimal"
-      });
-  
-      $('#sidebarButton').on('click', toggleSidebar);
-  
-      CHARACTERS.forEach((o) => {
-        let chars = $('#characters-list');
-        chars.append(`<li><a href=\"#\">${o}</a></li>`);
-      });
-    
-     $("#characters-list").on("click", (e) => {
-          toggleSidebar(e);
-          charSelect(e, e.target.text);
-      });
-  
-      $('#dismiss, .overlay').on('click', toggleSidebar);
-  }
-  
-  static InitializeDataTable() {
-    APP.FrameTable = $("#frametable").DataTable({
-      paging: false,
-      searching: false,
-      fixedHeader: true,
-      ajax: 'data/frames/Steve Fox.json',
-      columns: [
-          { title: 'Input' },
-          { title: 'Startup' },
-          { title: 'Block' },
-          { title: 'Hit' },
-          { title: 'Counter' },
-          { title: 'Level' },
-          { title: 'Damage' }
-]
-  });
-  }
 
-  static InitializeFooTable() {
-    $('#frametable').footable({
-      columns: [
-        { title: 'Input' },
-        { title: 'Startup' },
-        { title: 'Block' },
-        { title: 'Hit' },
-        { title: 'Counter' },
-        { title: 'Level' },
-        { title: 'Damage' }
+    static InitializeSideBar() {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#sidebarButton').on('click', toggleSidebar);
+
+        CHARACTERS.forEach((o) => {
+            let chars = $('#characters-list');
+            chars.append(`<li><a href=\"#\">${o}</a></li>`);
+        });
+
+        $("#characters-list").on("click", (e) => {
+            toggleSidebar(e);
+            charSelect(e, e.target.text);
+        });
+
+        $('#dismiss, .overlay').on('click', toggleSidebar);
+    }
+
+    static InitializeDataTable() {
+        APP.FrameTable = $("#frametable").DataTable({
+            paging: false,
+            searching: false,
+            fixedHeader: true,
+            ajax: 'data/frames/Steve Fox.json',
+            columns: [
+                { title: 'Input' },
+                { title: 'Startup' },
+                { title: 'Block' },
+                { title: 'Hit' },
+                { title: 'Counter' },
+                { title: 'Level' },
+                { title: 'Damage' }
+]
+        });
+    }
+
+    static InitializeFooTable() {
+        $('#frametable').footable({
+            columns: [
+                { title: 'Input' },
+                { title: 'Startup' },
+                { title: 'Block' },
+                { title: 'Hit' },
+                { title: 'Counter' },
+                { title: 'Level' },
+                { title: 'Damage' }
       ],
-      "rows":[]
-      
-    });
-  }
+            "rows": []
+        });
+    }
 };
 
 function toggleSidebar(e) {
@@ -124,7 +124,6 @@ function toggleSidebar(e) {
         }
         toggleSidebar.active = !toggleSidebar.active;
         console.log("Sidebar:" + toggleSidebar.active);
-
         return;
     }
     toggleSidebar.active = false;
@@ -177,52 +176,64 @@ function format(d) {
 
 
 function checkboxes() {
-     
+
     // Event listener to the two range filtering inputs to redraw on input
     $("#allCheckbox").change(function() {
-      if ($(this).is(":checked")) {
-          $('input[type=checkbox]').each(function(index) {
-              $(this)[0].checked = true;
-          });
+        if ($(this).is(":checked")) {
+            $('input[type=checkbox]').each(function(index) {
+                $(this)[0].checked = true;
+            });
 
-          $.fn.dataTable.ext.search.pop();
-      } else {
-          $('input[type=checkbox]').each(function(index) {
-              $(this)[0].checked = false;
-          });
-          $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-              return false;
-          });
-      }
-      table.draw();
-  });
-  
+            $.fn.dataTable.ext.search.pop();
+        } else {
+            $('input[type=checkbox]').each(function(index) {
+                $(this)[0].checked = false;
+            });
+            $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+                return false;
+            });
+        }
+        table.draw();
+    });
+
 
 }
-function rowclick() {
-  $("#frametable tbody").on("click", (e) => {
-    let tr = $(this).closest('tr');
-    let row = APP.FrameTable.row(tr);
 
-    if (row.child.isShown()) {
-        // This row is already open - close it
-        row.child.hide();
-        tr.removeClass('shown');
-    } else {
-        // Open this row
-        row.child(format(row.data())).show();
-        tr.addClass('shown');
-    }
-});
+function rowclick() {
+    $("#frametable tbody").on("click", (e) => {
+        let tr = $(this).closest('tr');
+        let row = APP.FrameTable.row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            // Open this row
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
+    });
 }
 
 const LOG = (...args) => { console.log(args); };
 const ASSERT = (...args) => { console.assert(args); };
 const LOG_IF = (expression, ...args) => { if ((expression)) console.log(args); };
 
+function setActive(e) {
+    let li = e.currentTarget.parentElement.children;
+    for (var i = 0; i < li.length; i++) {
+        li[i].children[0].className = "";
+    }
+    e.currentTarget.children[0].className = "active";
+}
+
 $(document).ready(function() {
-  APP.InitializeFooTable();
-  LOG_IF(typeof vasd == 'undefined', "vasd is undefined");
-  console.info("Hello");
+    APP.InitializeSideBar();
+    APP.InitializeDataTable();
+    let navs = document.getElementById("navButtons").children;
+    for (var i = 0; i < navs.length; i++) {
+        navs[i].addEventListener('click', setActive);
+    }
 
 });
